@@ -6,13 +6,13 @@
 /*   By: nreher <nreher@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 11:08:38 by nreher            #+#    #+#             */
-/*   Updated: 2023/01/31 19:40:13 by nreher           ###   ########.fr       */
+/*   Updated: 2023/02/02 16:31:27 by nreher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_writehex(unsigned long long int nbr, char c, int checker)
+int	ft_writehex(unsigned long nbr, char c, int checker)
 {
 	char			*base;
 	int				crwl;

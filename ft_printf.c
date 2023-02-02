@@ -6,7 +6,7 @@
 /*   By: nreher <nreher@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 18:37:04 by nreher            #+#    #+#             */
-/*   Updated: 2023/01/31 19:41:02 by nreher           ###   ########.fr       */
+/*   Updated: 2023/02/02 16:33:37 by nreher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,20 +50,36 @@ int	ft_decide(va_list args, char c, int out)
 	else if (c == 's')
 		out += ft_putnstr_fd(va_arg(args, char *));
 	else if (c == 'p')
-	{
-		write(1, "0x", 2);
-		out = out + 2 + ft_writehex(va_arg(args, unsigned long long), c, 0);
-	}
+		out += pointer_maker(va_arg(args, unsigned long), c, 0);
 	else if (c == 'd' || c == 'i')
 		out += ft_putnnbr_fd(va_arg(args, int));
 	else if (c == 'u')
 		out += ft_putunbr_fd(va_arg(args, unsigned int));
 	else if (c == 'x' || c == 'X')
-		out += ft_writehex(va_arg(args, int), c, 0);
+		out += ft_writehex(va_arg(args, unsigned int), c, 0);
 	else
 	{
 		write(1, "%", 1);
 		out++;
+	}
+	return (out);
+}
+
+int	pointer_maker(unsigned long i, char c, int d)
+{
+	int	out;
+
+	out = 0;
+	if (i == 0)
+	{
+		write(1, "(nil)", 5);
+		out = 5;
+		return (out);
+	}
+	else
+	{
+		write(1, "0x", 2);
+		out = 2 + ft_writehex(i, c, d);
 	}
 	return (out);
 }
