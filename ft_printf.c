@@ -6,7 +6,7 @@
 /*   By: nreher <nreher@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 18:37:04 by nreher            #+#    #+#             */
-/*   Updated: 2023/02/02 16:33:37 by nreher           ###   ########.fr       */
+/*   Updated: 2023/02/03 17:50:24 by nreher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	ft_decide(va_list args, char c, int out)
 		out += ft_putunbr_fd(va_arg(args, unsigned int));
 	else if (c == 'x' || c == 'X')
 		out += ft_writehex(va_arg(args, unsigned int), c, 0);
-	else
+	else if (c == '%')
 	{
 		write(1, "%", 1);
 		out++;
