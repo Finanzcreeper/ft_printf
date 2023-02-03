@@ -6,7 +6,7 @@
 /*   By: nreher <nreher@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 18:37:04 by nreher            #+#    #+#             */
-/*   Updated: 2023/02/03 17:50:24 by nreher           ###   ########.fr       */
+/*   Updated: 2023/02/03 18:01:57 by nreher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,12 @@ int	ft_decide(va_list args, char c, int out)
 	{
 		write(1, "%", 1);
 		out++;
+	}
+	else
+	{
+		write(1, "%", 1);
+		write(1, &c, 1);
+		out += 2;
 	}
 	return (out);
 }
