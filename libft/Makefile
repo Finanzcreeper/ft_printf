@@ -24,10 +24,10 @@ bonus : $(BONOBJ) $(OBJ)
 	ar -cvq $(NAME) $^
 
 fclean :
-	-rm $(OBJ) $(NAME)
+	-@rm -f $(OBJ) $(NAME) || true
 
 clean :
-	-rm $(OBJ)
+	-@rm -f $(OBJ) || true
 
 re : fclean all
 

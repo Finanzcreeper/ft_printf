@@ -19,10 +19,10 @@ comp :
 	clear && $(CC) .main.c $(NAME)
 
 clean :
-	- rm $(OBJ) && make fclean -C libft
+	-@ rm -f $(OBJ) && make fclean -C libft || true
 
 fclean : clean
-	- rm $(NAME) a.out
+	-@ rm -f $(NAME) a.out || true
 
 re : fclean all
 
