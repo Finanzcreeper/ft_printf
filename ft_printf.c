@@ -6,10 +6,11 @@
 /*   By: nreher <nreher@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 18:37:04 by nreher            #+#    #+#             */
-/*   Updated: 2023/02/03 18:01:57 by nreher           ###   ########.fr       */
+/*   Updated: 2023/02/03 19:14:42 by nreher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include	"libft/libft.h"
 #include	"ft_printf.h"
 
 int	ft_printf(const char *input, ...)
@@ -52,9 +53,9 @@ int	ft_decide(va_list args, char c, int out)
 	else if (c == 'p')
 		out += pointer_maker(va_arg(args, unsigned long), c, 0);
 	else if (c == 'd' || c == 'i')
-		out += ft_putnnbr_fd(va_arg(args, int));
+		out += ft_putnnbr_fd(va_arg(args, int), 0);
 	else if (c == 'u')
-		out += ft_putunbr_fd(va_arg(args, unsigned int));
+		out += ft_putunbr_fd(va_arg(args, unsigned int), 0);
 	else if (c == 'x' || c == 'X')
 		out += ft_writehex(va_arg(args, unsigned int), c, 0);
 	else if (c == '%')
@@ -64,11 +65,21 @@ int	ft_decide(va_list args, char c, int out)
 	}
 	else
 	{
-		write(1, "%", 1);
-		write(1, &c, 1);
-		out += 2;
+		join(c, &out);
 	}
 	return (out);
+}
+
+void	join(char c, int *out)
+{
+	char	*o;
+
+	o = ft_calloc(3, sizeof(char));
+	o[0] = '%';
+	o[1] = c;
+	write(1, o, 2);
+	*out += 2;
+	free(o);
 }
 
 int	pointer_maker(unsigned long i, char c, int d)

@@ -6,7 +6,7 @@
 /*   By: nreher <nreher@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 18:59:21 by nreher            #+#    #+#             */
-/*   Updated: 2023/02/03 18:02:34 by nreher           ###   ########.fr       */
+/*   Updated: 2023/02/03 19:26:30 by nreher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,5 +57,21 @@ int main(void)
 	a = ft_printf("wrong arg: %M %P\n");
 	b = printf("wrong arg: %M %P\n");
 	printf("mine: %d=%d :original\n-----------------------------------------\n", a, b);
+	a = ft_printf("%d\n", -111);
+	b = printf("%d\n", -111);
+	printf("mine: %d=%d :original\n-----------------------------------------\n", a, b);
+	a = ft_printf("NULL %s NULL\n", NULL);
+	b = printf("NULL %s NULL\n", NULL);
+	printf("mine: %d=%d :original\n-----------------------------------------\n", a, b);
+	a = ft_printf(" %x %x %x %x %x %x %x\n", INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42);
+	b = printf(" %x %x %x %x %x %x %x\n", INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42);
+	printf("mine: %d=%d :original\n-----------------------------------------\n", a, b);
+	a = ft_printf("%%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%% %%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%% %%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%% %c%%\n", 'A', "42", 42, 42 ,42 , 42, 42, 'B', "-42", -42, -42 ,-42 ,-42, 42, 'C', "0", 0, 0 ,0 ,0, 42, 0);
+	b = printf("%%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%% %%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%% %%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%% %c%%\n", 'A', "42", 42, 42 ,42 , 42, 42, 'B', "-42", -42, -42 ,-42 ,-42, 42, 'C', "0", 0, 0 ,0 ,0, 42, 0);
+	printf("mine: %d=%d :original\n-----------------------------------------\n", a, b);
+	a = ft_printf("{ %x }\n", 0);
+	b = printf("{ %x }\n", 0);
+	printf("mine: %d=%d :original\n-----------------------------------------\n", a, b);
+
 	return(0);
 }
